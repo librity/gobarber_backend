@@ -56,3 +56,35 @@ Controller  => What interacts with the two above, where the server operates;
   a model (like authentication => sessions.controller);
 
 yarn eslint --fix src --ext .js
+
+netstat -ano | grep 5432
+
+sudo apt-get --purge remove postgres*
+
+yarn sequelize db:migrate
+yarn sequelize db:migrate:undo:all
+
+Ctrl+SPACE = list all Object options
+Ctrl+MouseOver = show Object where it was defined
+^^^^^^^^^^HellaGood shortcuts
+
+
+JWT => Json Web Token
+  HEADER (token type & crypt algorithm) => eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.
+    {
+      "alg": "HS256",
+      "typ": "JWT"
+    }
+  PAYLOAD (aditional, non-sensitive data) => eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.
+    {
+      "sub": "1234567890",
+      "name": "John Doe",
+      "iat": 1516239022
+    }
+  SIGNATURE (digital signature & sensitive data) => SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c
+    HMACSHA256(
+      base64UrlEncode(header) + "." +
+      base64UrlEncode(payload),
+      <your-256-bit-secret-goes-here-aka-encryption-key>
+    )
+  They have expiration validity, yet aren't overwritten by default;

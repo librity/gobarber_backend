@@ -65,6 +65,10 @@ $ stty -a
 $ kill -cont $shellpid
 // Look process by name & find its $shellpid
 $ ps x | grep bash
+// List background processes
+$ jobs
+// Bring process back to foreground
+$ fg $jobid
 
 $ sudo apt-get --purge remove postgres*
 

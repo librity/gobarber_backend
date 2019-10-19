@@ -54,3 +54,5 @@ Controller  => What interacts with the two above, where the server operates;
   An Object class, that returns a JSON (RESTAPI) & NEVER calls another controller;
   You should have a controller for each Model, but you don't need a controller w/
   a model (like authentication => sessions.controller);
+
+yarn eslint --fix src --ext .js

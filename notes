@@ -1,11 +1,11 @@
-sudo docker run --name database -e POSTGRES_PASSWORD=docker -p 5433:5432 -d postgres:11
-UN: postgres
-PW: docker
-docker stop database
-docker start database
-docker logs database
-docker ps -a
-docker stop $(docker ps -a -q); docker rm $(docker ps -a -q);
+$ sudo docker run --name database -e POSTGRES_PASSWORD=docker -p 5433:5432 -d postgres:11
+username: postgres
+password: docker
+$ docker stop database
+$ docker start database
+$ docker logs database
+$ docker ps -a
+$ docker stop $(docker ps -a -q); docker rm $(docker ps -a -q);
 
 Object-Relational-Mapper => Sequelize
 ^^^What interprets between your node app & your whataver DB&SQX
@@ -55,14 +55,21 @@ Controller  => What interacts with the two above, where the server operates;
   You should have a controller for each Model, but you don't need a controller w/
   a model (like authentication => sessions.controller);
 
-yarn eslint --fix src --ext .js
+$ yarn eslint --fix src --ext .js
 
-netstat -ano | grep 5432
+$ netstat -ano | grep 5432
 
-sudo apt-get --purge remove postgres*
+// Lists all terminal control character assignments
+$ stty -a
+// Sends SIGnalCONTinue (to a ^Z SIGnalSUSPended shell)
+$ kill -cont $shellpid
+// Look process by name & find its $shellpid
+$ ps x | grep bash
 
-yarn sequelize db:migrate
-yarn sequelize db:migrate:undo:all
+$ sudo apt-get --purge remove postgres*
+
+$ yarn sequelize db:migrate
+$ yarn sequelize db:migrate:undo:all
 
 Ctrl+SPACE = list all Object options
 Ctrl+MouseOver = show Object where it was defined
@@ -88,3 +95,5 @@ JWT => Json Web Token
       <your-256-bit-secret-goes-here-aka-encryption-key>
     )
   They have expiration validity, yet aren't overwritten by default;
+
+YUP => Schema Validation Library

@@ -101,3 +101,5 @@ JWT => Json Web Token
   They have expiration validity, yet aren't overwritten by default;
 
 YUP => Schema Validation Library
+
+.gitignore generator => https://www.gitignore.io/api/node

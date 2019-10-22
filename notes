@@ -103,3 +103,8 @@ JWT => Json Web Token
 YUP => Schema Validation Library
 
 .gitignore generator => https://www.gitignore.io/api/node
+
+!!Use non-Relational databases for non-structured&performanceHeavy data!!
+  aka NoSQL, like => mongoDB
+
+$ docker run --name mongobarber -p 27017:27017 -d -t mongo

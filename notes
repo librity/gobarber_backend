@@ -106,5 +106,7 @@ YUP => Schema Validation Library
 
 !!Use non-Relational databases for non-structured&performanceHeavy data!!
   aka NoSQL, like => mongoDB
+  Mongo uses schemas instead of tables: rows in the db have diferent columns.
+  There's no migrations involved: we simply create and omit fields as we like.
 
 $ docker run --name mongobarber -p 27017:27017 -d -t mongo

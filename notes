@@ -110,3 +110,6 @@ YUP => Schema Validation Library
   There's no migrations involved: we simply create and omit fields as we like.
 
 $ docker run --name mongobarber -p 27017:27017 -d -t mongo
+
+Amazon SES, Mailgun, Sparkpost, Mandril(Mailchimp), Mailtrap(free while DEV), Gmail(free, limited sends), etc.
+Email Services^^^^^^^

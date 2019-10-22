@@ -6,7 +6,7 @@ import Appointment from '../models/Appointment';
 
 class ScheduleController {
   async index(req, res) {
-    const userIsProvider = User.findOne({
+    const userIsProvider = await User.findOne({
       where: { id: req.userId, provider: true },
     });
 

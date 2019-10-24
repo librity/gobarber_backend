@@ -20,24 +20,24 @@ class Mail {
   }
 
   configureTemplates() {
-    const viewsPath = resolve(__dirname, '..', 'app', 'views', 'emails');
+    const viewPath = resolve(__dirname, '..', 'app', 'views', 'emails');
 
     this.transporter.use(
       'compile',
       nodemailerhbs({
         viewEngine: exphbs.create({
-          layoutsPath: resolve(viewsPath, 'layouts'),
-          partialsPath: resolve(viewsPath, 'partials'),
-          defaultLayout: 'deafault',
+          layoutsDir: resolve(viewPath, 'layouts'),
+          partialsDir: resolve(viewPath, 'partials'),
+          defaultLayout: 'default',
           extname: '.hbs',
         }),
-        viewsPath,
+        viewPath,
         extName: '.hbs',
       })
     );
   }
 
-  sendMail(message) {
+  async sendMail(message) {
     return this.transporter.sendMail({
       ...mailConfig.default,
       ...message,

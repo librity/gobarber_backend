@@ -113,3 +113,5 @@ $ docker run --name mongobarber -p 27017:27017 -d -t mongo
 
 Amazon SES, Mailgun, Sparkpost, Mandril(Mailchimp), Mailtrap(free while DEV), Gmail(free, limited sends), etc.
 Email Services^^^^^^^
+
+sentry, honeybadger, bugsnag => application monitoring tools

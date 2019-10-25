@@ -115,3 +115,5 @@ Amazon SES, Mailgun, Sparkpost, Mandril(Mailchimp), Mailtrap(free while DEV), Gm
 Email Services^^^^^^^
 
 sentry, honeybadger, bugsnag => application monitoring tools
+
+.env => where environment variables & sesible data go, should de added to .gitignore

@@ -1,4 +1,4 @@
-$ sudo docker run --name database -e POSTGRES_PASSWORD=docker -p 5433:5432 -d postgres:11
+$ sudo docker run --name database -e POSTGRES_PASSWORD=docker -p 5432:5432 -d postgres:11
 username: postgres
 password: docker
 $ docker stop database
@@ -109,7 +109,9 @@ YUP => Schema Validation Library
   Mongo uses schemas instead of tables: rows in the db have diferent columns.
   There's no migrations involved: we simply create and omit fields as we like.
 
-$ docker run --name mongobarber -p 27017:27017 -d -t mongo
+$ sudo docker run --name mongobarber -p 27017:27017 -d -t mongo
+
+$ sudo docker run --name redisbarber -p 6379:6379 -d -t redis:alpine
 
 Amazon SES, Mailgun, Sparkpost, Mandril(Mailchimp), Mailtrap(free while DEV), Gmail(free, limited sends), etc.
 Email Services^^^^^^^

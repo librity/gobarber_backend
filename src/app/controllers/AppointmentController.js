@@ -1,13 +1,9 @@
-import { isBefore, subHours } from 'date-fns';
-
 import Appointment from '../models/Appointment';
 import User from '../models/User';
 import File from '../models/File';
 
 import CreateAppointmentService from '../services/CreateAppointmentService';
-
-import CancellationMail from '../jobs/CancellationMail';
-import Queue from '../../lib/Queue';
+import CancelAppointmentService from '../services/CancelAppointmentService';
 
 class AppointmentController {
   async index(req, res) {
@@ -55,41 +51,9 @@ class AppointmentController {
   }
 
   async delete(req, res) {
-    const appointment = await Appointment.findByPk(req.params.id, {
-      include: [
-        {
-          model: User,
-          as: 'provider',
-          attributes: ['name', 'email'],
-        },
-        {
-          model: User,
-          as: 'user',
-          attributes: ['name', 'email'],
-        },
-      ],
-    });
-
-    if (appointment.user_id !== req.userId) {
-      return res.status(401).json({
-        error: 'You do not have permission to cancel this appointment.',
-      });
-    }
-
-    const twoHoursBeforeAppointment = subHours(appointment.date, 2);
-    const rightNow = new Date();
-
-    if (isBefore(twoHoursBeforeAppointment, rightNow)) {
-      return res.status(401).json({
-        error: 'You can only cancel appointments two hours in advance.',
-      });
-    }
-
-    appointment.cancelled_at = rightNow;
-    await appointment.save();
-
-    await Queue.add(CancellationMail.key, {
-      appointment,
+    const appointment = await CancelAppointmentService.run({
+      appointment_id: req.params.id,
+      user_id: req.userId,
     });
 
     return res.json(appointment);
